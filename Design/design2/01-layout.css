@@ -1,0 +1,28 @@
+/* =========================================================
+   APP SHELL — three-column grid: sidebar / main / rail
+   ========================================================= */
+.app{
+  display:grid;
+  grid-template-columns: 84px minmax(0,1fr) 320px;
+  min-height:100vh;
+}
+
+.main{
+  grid-column:2;
+  min-width:0;
+  padding: 22px 28px 40px;
+  position:relative;
+}
+
+/* =========================================================
+   RESPONSIVE — shell breakpoints
+   Component-level responsive rules live in each component's
+   own file; this file only handles the grid itself.
+   ========================================================= */
+@media (max-width: 1180px){
+  .app{ grid-template-columns: 84px minmax(0,1fr); }
+}
+@media (max-width: 760px){
+  .app{ grid-template-columns: 1fr; }
+  .main{ padding: 16px 14px 90px; }
+}

@@ -1,0 +1,353 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conflux: Bento Glass Hybrid Social Chat Interface.">
+  <title>Conflux - Social Chat App (Instagram Brand Gradient)</title>
+  <!-- Google Fonts: Outfit -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="./global.css">
+  
+</head>
+<body>
+
+  <!-- Ambient glowing shapes -->
+  <div class="AmbientBackground">
+    <div class="AmbientBackground__blob AmbientBackground__blob--1"></div>
+    <div class="AmbientBackground__blob AmbientBackground__blob--2"></div>
+  </div>
+
+  <!-- MOBILE HEADER -->
+  <header class="MobileHeader">
+    <div class="Sidebar__logo-container" style="display: flex; margin-bottom: 0;">
+      <div class="Sidebar__logo-icon" style="width:30px; height:30px; border-radius:8px;">
+        <i data-lucide="zap" style="width:16px; height:16px;" class="desktop-icon"></i><i class="fa-solid fa-bolt mobile-icon" style="font-size: 16px;"></i>
+      </div>
+      <span class="Sidebar__logo-text" style="font-size:1.1rem;">Conflux</span>
+    </div>
+    
+    <div onclick="openProfileModal()" style="cursor: pointer; display: flex; align-items: center;">
+      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Avatar" class="Sidebar__profile-avatar" style="width: 30px; height: 30px;">
+    </div>
+  </header>
+
+  <!-- APP LAYOUT -->
+  <div class="AppContainer">
+    
+    <!-- COMPONENT: Sidebar -->
+    <aside class="Sidebar">
+      <div>
+        <div class="Sidebar__logo-container">
+          <div class="Sidebar__logo-icon">
+            <i data-lucide="zap"></i>
+          </div>
+          <span class="Sidebar__logo-text">Conflux</span>
+        </div>
+
+        
+        <nav class="Sidebar__nav">
+          <a href="index.html" class="Sidebar__nav-item" id="nav-home">
+            <div class="Sidebar__nav-item-left">
+              <i data-lucide="home" class="desktop-icon"></i>
+              <i class="fa-solid fa-house mobile-icon"></i>
+              <span class="Sidebar__nav-item-text">Home</span>
+            </div>
+          </a>
+          <a href="chats.html" class="Sidebar__nav-item" id="nav-chats">
+            <div class="Sidebar__nav-item-left">
+              <i data-lucide="message-square" class="desktop-icon"></i>
+              <i class="fa-solid fa-message mobile-icon"></i>
+              <span class="Sidebar__nav-item-text">Explore/Chats</span>
+            </div>
+            <span class="Sidebar__nav-badge">4</span>
+          </a>
+          <a href="#" class="Sidebar__nav-item" id="nav-calls">
+            <div class="Sidebar__nav-item-left">
+              <i data-lucide="phone" class="desktop-icon"></i>
+              <i class="fa-solid fa-phone mobile-icon"></i>
+              <span class="Sidebar__nav-item-text">Calls</span>
+            </div>
+          </a>
+          <a href="#" class="Sidebar__nav-item" id="nav-requests">
+            <div class="Sidebar__nav-item-left">
+              <i data-lucide="users" class="desktop-icon"></i>
+              <i class="fa-solid fa-users mobile-icon"></i>
+              <span class="Sidebar__nav-item-text">Requests</span>
+            </div>
+            <span class="Sidebar__nav-badge" style="background-color:var(--accent-primary);">2</span>
+          </a>
+          <a href="#" class="Sidebar__nav-item" id="nav-create-post">
+            <div class="Sidebar__nav-item-left">
+              <i data-lucide="plus-circle" class="desktop-icon"></i>
+              <i class="fa-solid fa-circle-plus mobile-icon"></i>
+              <span class="Sidebar__nav-item-text">Create Post</span>
+            </div>
+          </a>
+          <a href="profile.html" class="Sidebar__nav-item" id="nav-profile">
+            <div class="Sidebar__nav-item-left">
+              <i data-lucide="user" class="desktop-icon"></i>
+              <i class="fa-solid fa-user mobile-icon"></i>
+              <span class="Sidebar__nav-item-text">Profile</span>
+            </div>
+          </a>
+        </nav>
+      </div>
+
+      <!-- User card -->
+      <div class="Sidebar__profile-card" id="profile-card">
+        <div class="Sidebar__profile-info">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Sarah Connor" class="Sidebar__profile-avatar">
+          <div class="Sidebar__profile-meta">
+            <span class="Sidebar__profile-name">Sarah Connor</span>
+            <span class="Sidebar__profile-username">@sarah_c</span>
+          </div>
+        </div>
+        <i data-lucide="chevron-right"></i>
+      </div>
+    </aside>
+
+    <!-- CENTER CANVAS -->
+    <main class="CenterCanvas">
+      
+      <!-- SUB-COMPONENT: GLASS CHAT VIEW -->
+      <div class="ChatView" id="chat-view">
+        
+        <!-- Left Threads Pane -->
+        <section class="ThreadList" id="thread-list-pane">
+          <div class="ThreadList__header">
+            <div class="ThreadList__title-row">
+              <h2 class="ThreadList__title">Messages</h2>
+              <i data-lucide="edit-3" style="width: 18px; height: 18px; cursor: pointer; color: var(--text-secondary);"></i>
+            </div>
+            <div class="ThreadList__search">
+              <i data-lucide="search" class="ThreadList__search-icon"></i>
+              <input type="text" placeholder="Search chats..." class="ThreadList__search-input">
+            </div>
+          </div>
+          
+          <div class="ThreadList__threads">
+            <!-- Thread 1 -->
+            <div class="Thread active" onclick="switchMobileThreadView()">
+              <div class="Thread__avatar-container">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=100&q=80" alt="Sophia Chen" class="Thread__avatar">
+                <span class="Thread__status-dot"></span>
+              </div>
+              <div class="Thread__info">
+                <div class="Thread__name-row">
+                  <span class="Thread__name">Sophia Chen</span>
+                  <span class="Thread__time">12:32 PM</span>
+                </div>
+                <div class="Thread__message-row">
+                  <span class="Thread__last-message">Sounds good! Let's meet at 5pm.</span>
+                  <span class="Thread__unread-badge">2</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Thread 2 -->
+            <div class="Thread" onclick="switchMobileThreadView()">
+              <div class="Thread__avatar-container">
+                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=100&q=80" alt="Marcus Vance" class="Thread__avatar">
+                <span class="Thread__status-dot"></span>
+              </div>
+              <div class="Thread__info">
+                <div class="Thread__name-row">
+                  <span class="Thread__name">Marcus Vance</span>
+                  <span class="Thread__time">10:15 AM</span>
+                </div>
+                <div class="Thread__message-row">
+                  <span class="Thread__last-message">Did you see the setup photos?</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Thread 3 -->
+            <div class="Thread">
+              <div class="Thread__avatar-container">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Alex Rivera" class="Thread__avatar">
+              </div>
+              <div class="Thread__info">
+                <div class="Thread__name-row">
+                  <span class="Thread__name">Alex Rivera</span>
+                  <span class="Thread__time">Yesterday</span>
+                </div>
+                <div class="Thread__message-row">
+                  <span class="Thread__last-message">Can we schedule the design sync?</span>
+                  <span class="Thread__unread-badge">1</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Thread 4 -->
+            <div class="Thread">
+              <div class="Thread__avatar-container">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=100&q=80" alt="Elena Rostova" class="Thread__avatar">
+                <span class="Thread__status-dot"></span>
+              </div>
+              <div class="Thread__info">
+                <div class="Thread__name-row">
+                  <span class="Thread__name">Elena Rostova</span>
+                  <span class="Thread__time">Yesterday</span>
+                </div>
+                <div class="Thread__message-row">
+                  <span class="Thread__last-message">Loved your post! So inspiring.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Right Message Stream -->
+        <section class="ChatPanel" id="chat-panel-pane">
+          <div class="ChatPanel__header">
+            <div class="ChatPanel__contact">
+              <button onclick="backToThreadList()" class="ChatPanel__action-btn" id="mobile-back-btn" style="display: none; margin-right: 0.5rem; padding: 4px;">
+                <i data-lucide="arrow-left" style="width: 18px; height: 18px;"></i>
+              </button>
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=100&q=80" alt="Sophia Chen" class="ChatPanel__contact-avatar">
+              <div class="ChatPanel__contact-meta">
+                <span class="ChatPanel__contact-name">Sophia Chen</span>
+                <span class="ChatPanel__contact-status">online</span>
+              </div>
+            </div>
+            
+            <div class="ChatPanel__actions">
+              <button class="ChatPanel__action-btn"><i data-lucide="phone" class="desktop-icon"></i><i class="fa-solid fa-phone mobile-icon"></i></button>
+              <button class="ChatPanel__action-btn"><i data-lucide="video"></i></button>
+              <button class="ChatPanel__action-btn"><i data-lucide="info"></i></button>
+            </div>
+          </div>
+
+          <div class="MessageStream" id="message-stream">
+            <div class="Message received">
+              <div class="Message__bubble">
+                Hey Sarah! Are we still on for the Tokyo design discussion? I have some mockups to show you.
+              </div>
+              <span class="Message__time">12:28 PM</span>
+            </div>
+
+            <div class="Message sent">
+              <div class="Message__bubble">
+                Hey Sophia! Yes, absolutely. I'm finishing up a few components right now. What time works for you?
+              </div>
+              <span class="Message__time">12:30 PM</span>
+            </div>
+
+            <div class="Message received">
+              <div class="Message__bubble">
+                Sounds good! Let's meet at 5pm. I'll book a room at the tech hub in Roppongi Hills or we can jump on a video room here.
+              </div>
+              <span class="Message__time">12:32 PM</span>
+            </div>
+          </div>
+
+          <div class="ChatInput">
+            <form class="ChatInput__form" id="chat-input-form">
+              <button type="button" class="ChatInput__btn-attachment"><i data-lucide="paperclip"></i></button>
+              <input type="text" placeholder="Type a message..." class="ChatInput__input" id="message-text-input">
+              <button type="button" class="ChatInput__btn-attachment"><i data-lucide="smile"></i></button>
+              <button type="submit" class="ChatInput__btn-send">
+                <span>Send</span>
+                <i data-lucide="send"></i>
+              </button>
+            </form>
+          </div>
+        </section>
+
+      </div>
+
+    </main>
+
+    
+
+  </div>
+
+  <!-- COMPONENT: BENTO PROFILE MODAL -->
+  <div class="ProfileModal" id="profile-modal">
+    <div class="BentoProfile">
+      <button class="BentoProfile__close" id="close-modal">
+        <i data-lucide="x" style="width: 14px; height: 14px;"></i>
+      </button>
+
+      <!-- Bento dashboard grid -->
+      <div class="BentoProfile__grid">
+        <!-- Identity Cell -->
+        <div class="BentoCell BentoCell--identity">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Sarah Connor" class="BentoCell__avatar">
+          <div class="BentoCell__identity-info">
+            <span class="BentoCell__name">Sarah Connor</span>
+            <span class="BentoCell__username">@sarah_c</span>
+          </div>
+        </div>
+
+        <!-- Stats Cell -->
+        <div class="BentoCell BentoCell--stats">
+          <div class="BentoCell__stat">
+            <span class="BentoCell__stat-num">142</span>
+            <span class="BentoCell__stat-label">Posts</span>
+          </div>
+          <div class="BentoCell__stat">
+            <span class="BentoCell__stat-num">12.8k</span>
+            <span class="BentoCell__stat-label">Followers</span>
+          </div>
+          <div class="BentoCell__stat">
+            <span class="BentoCell__stat-num">482</span>
+            <span class="BentoCell__stat-label">Following</span>
+          </div>
+        </div>
+
+        <!-- Bio Cell -->
+        <div class="BentoCell BentoCell--bio">
+          <p>
+            Lead Product Designer & Frontend Developer. Building interfaces that feel alive. Exploring dark aesthetics, neon typography, and clean grids. Based in SF ☕️✨
+          </p>
+        </div>
+
+        <!-- Action Edit Cell -->
+        <div class="BentoCell BentoCell--action">
+          <button class="BentoCell__btn" id="edit-profile-btn">Edit Profile Dashboard</button>
+        </div>
+      </div>
+
+      <!-- Photo grid -->
+      <div class="BentoProfile__gallery">
+        <div class="GalleryItem">
+          <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=500&q=80" alt="" class="GalleryItem__img">
+          <div class="GalleryItem__overlay"><i data-lucide="heart" style="width: 14px; height: 14px; fill: white;"></i> 450</div>
+        </div>
+        <div class="GalleryItem">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=500&q=80" alt="" class="GalleryItem__img">
+          <div class="GalleryItem__overlay"><i data-lucide="heart" style="width: 14px; height: 14px; fill: white;"></i> 312</div>
+        </div>
+        <div class="GalleryItem">
+          <img src="https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=500&q=80" alt="" class="GalleryItem__img">
+          <div class="GalleryItem__overlay"><i data-lucide="heart" style="width: 14px; height: 14px; fill: white;"></i> 682</div>
+        </div>
+        <div class="GalleryItem">
+          <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=500&q=80" alt="" class="GalleryItem__img">
+          <div class="GalleryItem__overlay"><i data-lucide="heart" style="width: 14px; height: 14px; fill: white;"></i> 1.1k</div>
+        </div>
+        <div class="GalleryItem">
+          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=500&q=80" alt="" class="GalleryItem__img">
+          <div class="GalleryItem__overlay"><i data-lucide="heart" style="width: 14px; height: 14px; fill: white;"></i> 580</div>
+        </div>
+        <div class="GalleryItem">
+          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=500&q=80" alt="" class="GalleryItem__img">
+          <div class="GalleryItem__overlay"><i data-lucide="heart" style="width: 14px; height: 14px; fill: white;"></i> 925</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST SYSTEM -->
+  <div class="Toast" id="toast-notif">
+    <i data-lucide="info" style="color: var(--accent-primary); width:16px; height:16px;"></i>
+    <span id="toast-text">Success! Action completed.</span>
+  </div>
+</body>
+</html>

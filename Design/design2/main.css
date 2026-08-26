@@ -1,0 +1,10 @@
+/* Entry point — import order matters: tokens and layout must
+   load before any component that references them. */
+@import url('css/00-tokens.css');
+@import url('css/01-layout.css');
+@import url('css/component-sidebar-nav.css');
+@import url('css/component-mode-switcher.css');
+@import url('css/component-feed-view.css');
+@import url('css/component-chat-view.css');
+@import url('css/component-right-sidebar.css');
+@import url('css/component-profile-modal.css');

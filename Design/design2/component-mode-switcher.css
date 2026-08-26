@@ -1,0 +1,42 @@
+/* =========================================================
+   COMPONENT: ModeSwitcher (signature element)
+   A glass pill that slides an indicator between Feed / Chats;
+   this single control IS the seam where the two apps meet.
+   Requires .app[data-mode="feed"|"chats"] on a parent element.
+   ========================================================= */
+.mode-switcher{
+  position: sticky; top:0; z-index:20;
+  display:flex; justify-content:center;
+  padding-bottom: 18px;
+  background: linear-gradient(var(--bg-void) 60%, transparent);
+}
+.mode-switcher__track{
+  position:relative;
+  display:flex;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border:1px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding:4px;
+  box-shadow: var(--shadow-card);
+}
+.mode-switcher__indicator{
+  position:absolute; top:4px; left:4px;
+  width: calc(50% - 4px); height: calc(100% - 8px);
+  background: linear-gradient(135deg, var(--primary), var(--primary-dim));
+  border-radius: var(--radius-pill);
+  transition: transform var(--med) var(--ease);
+  box-shadow: 0 6px 18px -6px rgba(139,127,232,0.65);
+}
+.app[data-mode="chats"] .mode-switcher__indicator{ transform: translateX(100%); }
+.mode-switcher__btn{
+  position:relative; z-index:1;
+  padding: 10px 26px;
+  font-weight:600; font-size:14px;
+  color: var(--text-secondary);
+  border-radius: var(--radius-pill);
+  min-width:130px;
+  transition: color var(--fast) var(--ease);
+}
+.mode-switcher__btn[aria-pressed="true"]{ color:#fff; }
