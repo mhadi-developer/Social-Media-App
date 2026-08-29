@@ -1,0 +1,297 @@
+/* ==========================================================================
+   Theme tokens (as supplied)
+   ========================================================================== */
+:root {
+    --bg-app: #0E0A16;
+    --bg-card: #1A1426;
+    --bg-card-hover: #281F38;
+    --bg-input: #120D1A;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --text-primary: #fafafa;
+    --text-secondary: #F77737;
+    --text-muted: #833AB4;
+
+    --accent-primary: #E1306C;
+    --accent-secondary: #F56040;
+    --accent-gradient: linear-gradient(135deg,
+            #405de6 0%,
+            #833ab4 25%,
+            #c13584 50%,
+            #e1306c 70%,
+            #fd1d1d 85%,
+            #f56040 100%);
+    --accent-glow: rgba(225, 48, 108, 0.2);
+
+    --red-heart: #fd1d1d;
+    --green-online: #10b981;
+    --badge-bg: #e1306c;
+
+    --font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        sans-serif;
+    --sidebar-width: 280px;
+    --aside-width: 320px;
+    --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   Page shell
+   ========================================================================== */
+.auth-page {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    background: var(--bg-app);
+    background-image: radial-gradient(circle at 15% 20%,
+            var(--accent-glow) 0%,
+            transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(64, 93, 230, 0.15) 0%, transparent 45%);
+    font-family: var(--font-family);
+    box-sizing: border-box;
+}
+
+.auth-page *,
+.auth-page *::before,
+.auth-page *::after {
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Card
+   ========================================================================== */
+.auth-card {
+    width: 100%;
+    max-width: 460px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2.5rem 2.25rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.auth-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--accent-gradient);
+}
+
+.auth-card--success {
+    text-align: center;
+}
+
+.auth-success-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 1.25rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    background: var(--accent-gradient);
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+.auth-title {
+    margin: 0 0 0.4rem;
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+}
+
+.auth-subtitle {
+    margin: 0 0 1.75rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Form layout
+   ========================================================================== */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+}
+
+.auth-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.auth-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.auth-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.auth-optional {
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Inputs
+   ========================================================================== */
+.auth-input {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    font-family: var(--font-family);
+    font-size: 0.92rem;
+    color: var(--text-primary);
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    outline: none;
+    transition: var(--transition-smooth);
+}
+
+.auth-input::placeholder {
+    color: rgba(250, 250, 250, 0.35);
+}
+
+.auth-input:hover {
+    border-color: rgba(255, 255, 255, 0.16);
+}
+
+.auth-input:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.auth-input--error {
+    border-color: var(--red-heart);
+}
+
+.auth-input--error:focus {
+    box-shadow: 0 0 0 3px rgba(253, 29, 29, 0.2);
+}
+
+/* Native date-picker icon on a dark input */
+.auth-input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1) opacity(0.6);
+    cursor: pointer;
+}
+
+.auth-error {
+    font-size: 0.78rem;
+    color: var(--red-heart);
+}
+
+/* ==========================================================================
+   Alerts
+   ========================================================================== */
+.auth-alert {
+    margin-bottom: 1.25rem;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    background: rgba(253, 29, 29, 0.12);
+    border: 1px solid rgba(253, 29, 29, 0.35);
+}
+
+/* ==========================================================================
+   Submit button
+   ========================================================================== */
+.auth-submit {
+    margin-top: 0.5rem;
+    padding: 0.85rem 1rem;
+    font-family: var(--font-family);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: var(--accent-gradient);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: var(--transition-smooth);
+}
+
+.auth-submit:hover:not(:disabled) {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px var(--accent-glow);
+}
+
+.auth-submit:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.auth-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.auth-submit--link {
+    margin-top: 1.5rem;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.auth-footer {
+    margin: 1.75rem 0 0;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.auth-footer a {
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 2rem 1.5rem;
+        border-radius: 16px;
+    }
+
+    .auth-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================================
+   Reduced motion
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    .auth-submit {
+        transition: none;
+    }
+
+    .auth-submit:hover:not(:disabled) {
+        transform: none;
+    }
+}
