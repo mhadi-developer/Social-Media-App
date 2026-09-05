@@ -1,0 +1,2 @@
+USE `tms-test2`;
+INSERT INTO tbl_pkcert_dbms_users (user_role, user_name, user_designation, department_id, user_reporting_officer, user_email, user_password, user_contact_no, user_profile_pic, user_status) VALUES (2, 'Iqra', '', 4, 1, 'iqra@gmail.com', MD5('123456'), '', '', 1);

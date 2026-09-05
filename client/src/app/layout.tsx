@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Zap } from 'lucide-react';
 import { Sidebar } from '@/components/SideBar';
 import './globals.css';
+import AuthProvider from '@/context/AuthProvider';
 
 export const metadata = {
   title: 'Conflux - Social Chat App',
@@ -48,8 +49,10 @@ export default function RootLayout({
 
         {/* Main App Layout Grid */}
         <div className="AppContainer">
+           <AuthProvider>
           <Sidebar />
-          <main className="CenterCanvas">{children}</main>
+            <main className="CenterCanvas">{children}</main>
+            </AuthProvider>
         </div>
       </body>
     </html>

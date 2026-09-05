@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import Image from 'next/image';
 import {
@@ -8,13 +9,19 @@ import {
   X,
   Info,
 } from 'lucide-react';
+import { useAuth } from "@/context/AuthProvider";
 
 export const HomePage: React.FC = () => {
+  const { user , loading} = useAuth();
+  console.log(user)
+  
   return (
     <>
       <div className="FeedView" id="feed-view">
         <div className="FeedView__header">
-          <h1 className="FeedView__title">Home Feed</h1>
+          <h1 className="FeedView__title"> Hello {
+                user?.firstName 
+            }</h1>
           <div
             style={{
               display: 'flex',
@@ -127,7 +134,7 @@ export const HomePage: React.FC = () => {
                   className="BentoPost__comment-avatar"
                 />
                 <div className="BentoPost__comment-content">
-                  <span className="BentoPost__comment-author">elena_r</span>Roppongi? Let's sync!
+                  <span className="BentoPost__comment-author">elena_r</span>Roppongi? Let&apos;s sync!
                 </div>
               </div>
             </div>
@@ -218,7 +225,7 @@ export const HomePage: React.FC = () => {
                   className="BentoPost__comment-avatar"
                 />
                 <div className="BentoPost__comment-content">
-                  <span className="BentoPost__comment-author">elena_r</span>Roppongi? Let's sync!
+                  <span className="BentoPost__comment-author">elena_r</span>Roppongi? Let&apos;s sync!
                 </div>
               </div>
             </div>
@@ -310,7 +317,7 @@ export const HomePage: React.FC = () => {
                   className="BentoPost__comment-avatar"
                 />
                 <div className="BentoPost__comment-content">
-                  <span className="BentoPost__comment-author">elena_r</span>Roppongi? Let's sync!
+                  <span className="BentoPost__comment-author">elena_r</span>Roppongi? Let&apos;s sync!
                 </div>
               </div>
             </div>

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/immutability */
 "use client";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -46,9 +47,7 @@ export  function LoginPage() {
         return;
       }
 
-      // Backend has set the HTTP-only JWT cookie. Middleware on the
-        // dashboard route validates it, so a simple redirect is enough
-        router.push('/')
+      window.location.href = '/home';
         
     } catch {
       setServerError("Could not reach the server. Check your connection and try again.");
